@@ -21,7 +21,18 @@ func _ready():
 			# Add the instance to the current scene
 			add_child(instance)
 
+func get_camera() -> Camera3D: return $Camera3D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+const CAMERA_SPEED = 3
+func move_camera(dt):
+	if Input.is_key_pressed(KEY_LEFT):
+		get_camera() .transform.origin.x -= CAMERA_SPEED*dt
+	if Input.is_key_pressed(KEY_RIGHT):
+		get_camera().transform.origin.x += CAMERA_SPEED*dt
+	if Input.is_key_pressed(KEY_UP):
+		get_camera().transform.origin.z -= CAMERA_SPEED*dt
+	if Input.is_key_pressed(KEY_DOWN):
+		get_camera().transform.origin.z += CAMERA_SPEED*dt
+
 func _process(delta):
-	pass
+	move_camera(delta)

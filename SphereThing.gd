@@ -15,11 +15,13 @@ const hex_type_colors = {
 func set_hex_type(t: HexTypeLib.HexType):
 	self.hex_type = t
 	self.material.albedo_color = hex_type_colors[self.hex_type]
+	
+func get_mesh() -> MeshInstance3D: return $SphereMesh3D
 
 func _ready():
 	# duplicate override material so we can edit it without affecting all instances
-	self.material = $SphereMesh3D.get_surface_override_material(0).duplicate()
-	$SphereMesh3D.set_surface_override_material(0, self.material)
+	self.material = get_mesh().get_surface_override_material(0).duplicate()
+	get_mesh().set_surface_override_material(0, self.material)
 
 	set_hex_type(HexTypeLib.random_type())
 
