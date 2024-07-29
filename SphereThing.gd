@@ -27,8 +27,3 @@ func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			set_hex_type(HexTypeLib.inverses[self.hex_type])
-
-
-
-func _on_Area_3d_input_event(camera, event, position, normal, shape_idx):
-	pass # Replace with function body.
