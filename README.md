@@ -1,0 +1,7 @@
+- 2024-07-28:
+  - basically recreated https://www.youtube.com/watch?v=U5qGj8qt7VU / https://github.com/EXPWorlds/Godot-Tutorials 
+  - but using a CylinderMesh instead
+    - couldn't figure out how to get a hexagonal PrismMesh
+  - had to specify a SurfaceMaterialOverride on each SphereMesh3D
+  - disks respond to clicks
+  - wanna programmatically spawn dozens of the disks in a grid
