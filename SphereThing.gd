@@ -1,6 +1,12 @@
 extends Node3D
 
 var Number_Generator = RandomNumberGenerator.new()
+var material: Material
+
+func _ready():
+	# duplicate override material so we can edit it without affecting all instances
+	self.material = $SphereMesh3D.get_surface_override_material(0).duplicate()
+	$SphereMesh3D.set_surface_override_material(0, self.material)
 
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
@@ -16,9 +22,7 @@ func randomize_color():
 	self.Number_Generator.randomize()
 	var new_blue = self.Number_Generator.randf_range(0.0, 1.0)
 	var new_color = Vector3(new_red, new_green, new_blue).normalized()
-	var x = self.get_node("SphereMesh3D") as MeshInstance3D
-	var this_material = x.get_surface_override_material(0)
-	this_material.albedo_color = Color(new_color.x, new_color.y, new_color.z, 1.0)
+	self.material.albedo_color = Color(new_color.x, new_color.y, new_color.z, 1.0)
 
 
 func _on_Area_3d_input_event(camera, event, position, normal, shape_idx):

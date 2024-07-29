@@ -5,3 +5,5 @@
   - had to specify a SurfaceMaterialOverride on each SphereMesh3D
   - disks respond to clicks
   - wanna programmatically spawn dozens of the disks in a grid
+  - okay, did that, but clicking one changes all their colors
+  - so I duplicate the surface override material

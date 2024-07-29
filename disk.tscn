@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://wya1l2wusd5r"]
+
+[ext_resource type="Script" path="res://SphereThing.gd" id="1_y52bn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a014i"]
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubkb8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_miese"]
+height = 0.2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SphereThing" type="Node3D" parent="."]
+script = ExtResource("1_y52bn")
+
+[node name="SphereMesh3D" type="MeshInstance3D" parent="SphereThing"]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_a014i")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_ubkb8")
+
+[node name="Area3D" type="Area3D" parent="SphereThing/SphereMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SphereThing/SphereMesh3D/Area3D"]
+shape = SubResource("CylinderShape3D_miese")
+
+[connection signal="input_event" from="SphereThing/SphereMesh3D/Area3D" to="SphereThing" method="_on_Area_input_event"]
