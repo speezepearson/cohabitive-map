@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://5umdm3asgmmx"]
+[gd_scene load_steps=3 format=3 uid="uid://5umdm3asgmmx"]
 
 [ext_resource type="Script" path="res://play.gd" id="1_ikw4v"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wrq03"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ikw4v")
@@ -15,3 +17,9 @@ size = 5.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.690479, 0.529027, -0.493325, 1.57024e-08, 0.681998, 0.731354, 0.723353, 0.504984, -0.470905, -6.08547, 2.88619, -3.32766)
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("SphereMesh_wrq03")
