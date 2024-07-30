@@ -29,8 +29,7 @@ func _ready():
 	# duplicate override material so we can edit it without affecting all instances
 	self.material = get_mesh().get_surface_override_material(0).duplicate()
 	get_mesh().set_surface_override_material(0, self.material)
-
-	set_cell_type(Cell.random_type())
+	set_cell_type(self.cell_type)
 
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:

@@ -2,24 +2,12 @@ extends Node3D
 
 var DISK_SCENE = load('res://disk.tscn') as PackedScene
 
-var disk_posns = {}
-func add_disk(ij: Vector2i, disk: Disk):
-	disk_posns[disk] = ij
-	var transform = Transform3D()
-	transform = transform.scaled(Vector3(.9, .9, .9))
-	transform.origin = Hex.ij2xyz(ij)
-	disk.transform = transform
-	add_child(disk)
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(-1, 2):
-		for j in range(-1, 2):
-			var ij = Vector2i(i,j)
-			var instance = DISK_SCENE.instantiate() as Disk
-			instance.Clicked.connect(_on_disk_clicked.bind(instance))
-			instance.RightClicked.connect(_on_disk_rightclicked.bind(instance))
-			add_disk(ij, instance)
+	for cell in $Cells.get_children():
+		cell = cell as Disk
+		cell.Clicked.connect(_on_disk_clicked.bind(cell))
+		cell.RightClicked.connect(_on_disk_rightclicked.bind(cell))
 			
 	get_player().transform.origin = Hex.ij2xyz(Vector2i.ZERO) + Vector3(0,0.2,0)
 
@@ -67,11 +55,12 @@ func _on_player_clicked():
 	selection = Selection.PLAYER
 	
 func _on_disk_clicked(disk: Disk):
-	var disk_posn = disk_posns[disk]
-	if player_ij == disk_posn or Hex.get_adjacency_direction(player_ij, disk_posns[disk]) != Vector2i.ZERO:
+	var disk_ij = disk.get_meta('ij') as Vector2i
+	if player_ij == disk_ij or Hex.get_adjacency_direction(player_ij, disk_ij) != Vector2i.ZERO:
 		disk.flip_type()
 
 func _on_disk_rightclicked(disk: Disk):
-	var dir = Hex.get_adjacency_direction(player_ij, disk_posns[disk])
+	var disk_ij = disk.get_meta('ij') as Vector2i
+	var dir = Hex.get_adjacency_direction(player_ij, disk_ij)
 	if dir != Vector2i.ZERO:
 		move_player(dir)

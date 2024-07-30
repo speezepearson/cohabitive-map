@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://5umdm3asgmmx"]
+[gd_scene load_steps=4 format=3 uid="uid://5umdm3asgmmx"]
 
+[ext_resource type="PackedScene" uid="uid://wya1l2wusd5r" path="res://disk.tscn" id="1_h1yc5"]
 [ext_resource type="Script" path="res://play.gd" id="1_ikw4v"]
 [ext_resource type="PackedScene" uid="uid://e8bpaumysdie" path="res://player.tscn" id="2_fvciv"]
 
@@ -19,4 +20,183 @@ transform = Transform3D(-0.690479, 0.529027, -0.493325, 1.57024e-08, 0.681998, 0
 
 [node name="Player" parent="." instance=ExtResource("2_fvciv")]
 
-[connection signal="Clicked" from="Player" to="." method="_on_player_clicked"]
+[node name="Cells" type="Node3D" parent="."]
+
+[node name="SphereThing_-3_-3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1.5, 0, -2.59808)
+cell_type = 1
+metadata/ij = Vector2i(-3, -3)
+
+[node name="SphereThing_-3_-2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2, 0, -1.73205)
+cell_type = 1
+metadata/ij = Vector2i(-3, -2)
+
+[node name="SphereThing_-3_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2.5, 0, -0.866025)
+metadata/ij = Vector2i(-3, -1)
+
+[node name="SphereThing_-3_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3, 0, 0)
+cell_type = 1
+metadata/ij = Vector2i(-3, 0)
+
+[node name="SphereThing_-2_-3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.5, 0, -2.59808)
+cell_type = 4
+metadata/ij = Vector2i(-2, -3)
+
+[node name="SphereThing_-2_-2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, -1.73205)
+cell_type = 1
+metadata/ij = Vector2i(-2, -2)
+
+[node name="SphereThing_-2_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1.5, 0, -0.866025)
+cell_type = 1
+metadata/ij = Vector2i(-2, -1)
+
+[node name="SphereThing_-2_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2, 0, 0)
+cell_type = 1
+metadata/ij = Vector2i(-2, 0)
+
+[node name="SphereThing_-2_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2.5, 0, 0.866025)
+cell_type = 1
+metadata/ij = Vector2i(-2, 1)
+
+[node name="SphereThing_-1_-3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.5, 0, -2.59808)
+cell_type = 1
+metadata/ij = Vector2i(-1, -3)
+
+[node name="SphereThing_-1_-2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -1.73205)
+cell_type = 4
+metadata/ij = Vector2i(-1, -2)
+
+[node name="SphereThing_-1_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.5, 0, -0.866025)
+metadata/ij = Vector2i(-1, -1)
+
+[node name="SphereThing_-1_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, 0)
+cell_type = 4
+metadata/ij = Vector2i(-1, 0)
+
+[node name="SphereThing_-1_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1.5, 0, 0.866025)
+metadata/ij = Vector2i(-1, 1)
+
+[node name="SphereThing_-1_2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2, 0, 1.73205)
+cell_type = 1
+metadata/ij = Vector2i(-1, 2)
+
+[node name="SphereThing_0_-3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.5, 0, -2.59808)
+cell_type = 2
+metadata/ij = Vector2i(0, -3)
+
+[node name="SphereThing_0_-2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, -1.73205)
+cell_type = 2
+metadata/ij = Vector2i(0, -2)
+
+[node name="SphereThing_0_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.5, 0, -0.866025)
+cell_type = 2
+metadata/ij = Vector2i(0, -1)
+
+[node name="SphereThing_0_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+cell_type = 2
+metadata/ij = Vector2i(0, 0)
+
+[node name="SphereThing_0_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.5, 0, 0.866025)
+cell_type = 2
+metadata/ij = Vector2i(0, 1)
+
+[node name="SphereThing_0_2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1, 0, 1.73205)
+cell_type = 2
+metadata/ij = Vector2i(0, 2)
+
+[node name="SphereThing_0_3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -1.5, 0, 2.59808)
+cell_type = 2
+metadata/ij = Vector2i(0, 3)
+
+[node name="SphereThing_1_-2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2, 0, -1.73205)
+cell_type = 1
+metadata/ij = Vector2i(1, -2)
+
+[node name="SphereThing_1_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.5, 0, -0.866025)
+metadata/ij = Vector2i(1, -1)
+
+[node name="SphereThing_1_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, 0)
+cell_type = 5
+metadata/ij = Vector2i(1, 0)
+
+[node name="SphereThing_1_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.5, 0, 0.866025)
+cell_type = 4
+metadata/ij = Vector2i(1, 1)
+
+[node name="SphereThing_1_2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 1.73205)
+cell_type = 5
+metadata/ij = Vector2i(1, 2)
+
+[node name="SphereThing_1_3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.5, 0, 2.59808)
+cell_type = 5
+metadata/ij = Vector2i(1, 3)
+
+[node name="SphereThing_2_-1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2.5, 0, -0.866025)
+cell_type = 5
+metadata/ij = Vector2i(2, -1)
+
+[node name="SphereThing_2_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2, 0, 0)
+cell_type = 1
+metadata/ij = Vector2i(2, 0)
+
+[node name="SphereThing_2_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.5, 0, 0.866025)
+cell_type = 4
+metadata/ij = Vector2i(2, 1)
+
+[node name="SphereThing_2_2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1, 0, 1.73205)
+metadata/ij = Vector2i(2, 2)
+
+[node name="SphereThing_2_3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.5, 0, 2.59808)
+cell_type = 5
+metadata/ij = Vector2i(2, 3)
+
+[node name="SphereThing_3_0" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 3, 0, 0)
+metadata/ij = Vector2i(3, 0)
+
+[node name="SphereThing_3_1" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2.5, 0, 0.866025)
+cell_type = 5
+metadata/ij = Vector2i(3, 1)
+
+[node name="SphereThing_3_2" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2, 0, 1.73205)
+cell_type = 4
+metadata/ij = Vector2i(3, 2)
+
+[node name="SphereThing_3_3" parent="Cells" instance=ExtResource("1_h1yc5")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.5, 0, 2.59808)
+cell_type = 4
+metadata/ij = Vector2i(3, 3)
