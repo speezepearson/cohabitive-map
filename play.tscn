@@ -18,7 +18,16 @@ size = 5.0
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.690479, 0.529027, -0.493325, 1.57024e-08, 0.681998, 0.731354, 0.723353, 0.504984, -0.470905, -6.08547, 2.88619, -3.32766)
 
-[node name="Player" parent="." instance=ExtResource("2_fvciv")]
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Boat" parent="Players" instance=ExtResource("2_fvciv")]
+metadata/ij = Vector2i(0, 0)
+
+[node name="Hermit" parent="Players" instance=ExtResource("2_fvciv")]
+metadata/ij = Vector2i(0, -2)
+
+[node name="Druid" parent="Players" instance=ExtResource("2_fvciv")]
+metadata/ij = Vector2i(1, 2)
 
 [node name="Cells" type="Node3D" parent="."]
 
@@ -200,3 +209,7 @@ metadata/ij = Vector2i(3, 2)
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 1.5, 0, 2.59808)
 cell_type = 4
 metadata/ij = Vector2i(3, 3)
+
+[connection signal="Clicked" from="Players/Boat" to="." method="_on_boat_clicked"]
+[connection signal="Clicked" from="Players/Hermit" to="." method="_on_hermit_clicked"]
+[connection signal="Clicked" from="Players/Druid" to="." method="_on_druid_clicked"]
