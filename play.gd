@@ -54,6 +54,12 @@ var RIGHT = Vector2i(1,0)
 var DOWNLEFT = Vector2i(-1, 1)
 var DOWNRIGHT = Vector2i(0, 1)
 
+func get_adjacency_direction(ij1: Vector2i, ij2: Vector2i) -> Vector2i:
+	var delta = ij2 - ij1
+	for adj in [UPLEFT, UPRIGHT, LEFT, RIGHT, DOWNLEFT, DOWNRIGHT]:
+		if delta == adj: return adj
+	return Vector2i.ZERO
+
 func _input(event: InputEvent):
 	if selection == Selection.PLAYER:
 		if Input.is_action_just_pressed('upleft'): move_player(UPLEFT)
@@ -77,6 +83,9 @@ func _on_player_clicked():
 	selection = Selection.PLAYER
 	
 func _on_disk_clicked(disk: Disk):
-	selection = Selection.NONE
-	if player_ij == disk_posns[disk]:
+	var disk_posn = disk_posns[disk]
+	if player_ij == disk_posn:
 		disk.flip_type()
+	var dir = get_adjacency_direction(player_ij, disk_posn)
+	if dir != Vector2i.ZERO:
+		move_player(dir)
