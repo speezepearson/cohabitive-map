@@ -1,6 +1,6 @@
 extends Node3D
 
-var hex_type: HexTypeLib.HexType
+@export var hex_type: HexTypeLib.HexType
 var material: Material
 
 const hex_type_colors = {
