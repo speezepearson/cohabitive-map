@@ -1,4 +1,7 @@
 extends Node3D
+class_name Disk
+
+signal Clicked
 
 @export var hex_type: HexTypeLib.HexType
 var material: Material
@@ -11,6 +14,9 @@ const hex_type_colors = {
 	HexTypeLib.HexType.GRASS:    Color(0.5, 1.0, 0.5, 1.0),
 	HexTypeLib.HexType.FOREST:   Color(0.0, 0.5, 0.0, 1.0),
 }
+
+func flip_type():
+	set_hex_type(HexTypeLib.inverses[self.hex_type])
 
 func set_hex_type(t: HexTypeLib.HexType):
 	self.hex_type = t
@@ -28,4 +34,4 @@ func _ready():
 func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			set_hex_type(HexTypeLib.inverses[self.hex_type])
+			Clicked.emit()
