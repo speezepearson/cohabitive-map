@@ -18,6 +18,7 @@ func _ready():
 			var ij = Vector2i(i,j)
 			var instance = DISK_SCENE.instantiate() as Disk
 			instance.Clicked.connect(_on_disk_clicked.bind(instance))
+			instance.RightClicked.connect(_on_disk_rightclicked.bind(instance))
 			add_disk(ij, instance)
 			
 	get_player().transform.origin = Hex.ij2xyz(Vector2i.ZERO) + Vector3(0,0.2,0)
@@ -67,8 +68,10 @@ func _on_player_clicked():
 	
 func _on_disk_clicked(disk: Disk):
 	var disk_posn = disk_posns[disk]
-	if player_ij == disk_posn:
+	if player_ij == disk_posn or Hex.get_adjacency_direction(player_ij, disk_posns[disk]) != Vector2i.ZERO:
 		disk.flip_type()
-	var dir = Hex.get_adjacency_direction(player_ij, disk_posn)
+
+func _on_disk_rightclicked(disk: Disk):
+	var dir = Hex.get_adjacency_direction(player_ij, disk_posns[disk])
 	if dir != Vector2i.ZERO:
 		move_player(dir)

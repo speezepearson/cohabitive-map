@@ -2,6 +2,7 @@ extends Node3D
 class_name Disk
 
 signal Clicked
+signal RightClicked
 
 @export var cell_type: Cell.Type
 var material: Material
@@ -35,3 +36,5 @@ func _on_Area_input_event(camera, event, click_position, click_normal, shape_idx
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			Clicked.emit()
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			RightClicked.emit()
