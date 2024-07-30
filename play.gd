@@ -61,3 +61,7 @@ func _input(event: InputEvent):
 
 func _process(delta):
 	move_camera(delta)
+
+
+func _on_player_clicked():
+	print('click!')
