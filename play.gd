@@ -2,16 +2,12 @@ extends Node3D
 
 var DISK_SCENE = load('res://disk.tscn') as PackedScene
 
-const sqrt32 = sqrt(3)/2.0
-
-func ij2xyz(ij: Vector2i) -> Vector3: return Vector3(ij.x + ij.y/2.0, 0, ij.y*sqrt32)
-
 var disk_posns = {}
 func add_disk(ij: Vector2i, disk: Disk):
 	disk_posns[disk] = ij
 	var transform = Transform3D()
 	transform = transform.scaled(Vector3(.9, .9, .9))
-	transform.origin = ij2xyz(ij)
+	transform.origin = Hex.ij2xyz(ij)
 	disk.transform = transform
 	add_child(disk)
 
@@ -24,7 +20,7 @@ func _ready():
 			instance.Clicked.connect(_on_disk_clicked.bind(instance))
 			add_disk(ij, instance)
 			
-	get_player().transform.origin = ij2xyz(Vector2i.ZERO) + Vector3(0,0.2,0)
+	get_player().transform.origin = Hex.ij2xyz(Vector2i.ZERO) + Vector3(0,0.2,0)
 
 func get_player() -> Node3D: return $Player
 func get_camera() -> Camera3D: return $Camera3D
@@ -45,29 +41,16 @@ func move_camera(dt):
 var player_ij = Vector2i(0, 0)
 func move_player(dij: Vector2i):
 	player_ij += dij
-	get_player().transform.origin = ij2xyz(player_ij)
-
-var UPLEFT = Vector2i(0, -1)
-var UPRIGHT = Vector2i(1, -1)
-var LEFT = Vector2i(-1, 0)
-var RIGHT = Vector2i(1,0)
-var DOWNLEFT = Vector2i(-1, 1)
-var DOWNRIGHT = Vector2i(0, 1)
-
-func get_adjacency_direction(ij1: Vector2i, ij2: Vector2i) -> Vector2i:
-	var delta = ij2 - ij1
-	for adj in [UPLEFT, UPRIGHT, LEFT, RIGHT, DOWNLEFT, DOWNRIGHT]:
-		if delta == adj: return adj
-	return Vector2i.ZERO
+	get_player().transform.origin = Hex.ij2xyz(player_ij)
 
 func _input(event: InputEvent):
 	if selection == Selection.PLAYER:
-		if Input.is_action_just_pressed('upleft'): move_player(UPLEFT)
-		if Input.is_action_just_pressed('upright'): move_player(UPRIGHT)
-		if Input.is_action_just_pressed('left'): move_player(LEFT)
-		if Input.is_action_just_pressed('right'): move_player(RIGHT)
-		if Input.is_action_just_pressed('downleft'): move_player(DOWNLEFT)
-		if Input.is_action_just_pressed('downright'): move_player(DOWNRIGHT)
+		if Input.is_action_just_pressed('upleft'): move_player(Hex.UPLEFT)
+		if Input.is_action_just_pressed('upright'): move_player(Hex.UPRIGHT)
+		if Input.is_action_just_pressed('left'): move_player(Hex.LEFT)
+		if Input.is_action_just_pressed('right'): move_player(Hex.RIGHT)
+		if Input.is_action_just_pressed('downleft'): move_player(Hex.DOWNLEFT)
+		if Input.is_action_just_pressed('downright'): move_player(Hex.DOWNRIGHT)
 
 func _process(delta):
 	move_camera(delta)
@@ -86,6 +69,6 @@ func _on_disk_clicked(disk: Disk):
 	var disk_posn = disk_posns[disk]
 	if player_ij == disk_posn:
 		disk.flip_type()
-	var dir = get_adjacency_direction(player_ij, disk_posn)
+	var dir = Hex.get_adjacency_direction(player_ij, disk_posn)
 	if dir != Vector2i.ZERO:
 		move_player(dir)
